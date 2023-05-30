@@ -195,10 +195,10 @@
                                 </dl>
                             </div>
                         </div>
-                        <div style="margin-top: auto">
+                        <div style="margin-top: auto;display:flex">
                             <div class="purchase_wrap">
                                 <div class="purchase_wrap_div">
-                                    <button class="purchase_wrap_div_btn purchase_like_btn">
+                                    <button class="purchase_wrap_div_btn purchase_like_btn" th:if="${session.member != null}">
                                             <span class="purchase_wrap_first_span">
                                                 <span class="purchase_wrap_second_span">
                                                     <div>
@@ -223,15 +223,17 @@
                                             </span>
                                     </button>
                                 </div>
-                                <button class="purchase_wrap_button" onclick="moveApply()" th:if="${!#strings.equals(session.member.memberType, 'COMPANY')}">
-                                        <span class="camping_div_second_span">
-                                            <span class="button_children">
-                                                <span class="button_children">참가 신청하기</span>
-                                            </span>
+                                <button class="purchase_wrap_button" onclick="moveApply()" th:if="${session.member != null and !#strings.equals(session.member.memberType, 'COMPANY')}">
+                                    <span class="camping_div_second_span">
+                                        <span class="button_children">
+                                            <span class="button_children">참가 신청하기</span>
                                         </span>
+                                    </span>
                                 </button>
+                                </button>
+                                </div>
                                 <!-- 통솔자 일때만 보이게 하기 -->
-                                <button class="guide_wrap_button" th:if="${#strings.equals(session.member.memberType, 'GENERAL_GUIDE')}">
+                                <button class="guide_wrap_button" th:if="${session.member != null and #strings.equals(session.member.memberType, 'GENERAL_GUIDE')}">
                                         <span class="camping_div_second_span" >
                                             <span class="button_children">
                                                 <span class="button_leader"
@@ -459,7 +461,7 @@
                                     </dl>
                                 </div>
                             </div>
-                            <div style="margin-top: auto" th:if="${session.member != null}">
+                            <div style="margin-top: auto; display: flex" th:if="${session.member != null}">
                                 <div class="purchase_wrap">
                                     <div class="purchase_wrap_div">
                                         <button
@@ -493,7 +495,7 @@
                                                 </span>
                                         </button>
                                     </div>
-                                    <button class="purchase_wrap_button">
+                                    <button class="purchase_wrap_button" onclick="moveApply()" th:if="${session.member != null and !#strings.equals(session.member.memberType, 'COMPANY')}">
                                             <span class="camping_div_second_span">
                                                 <span class="button_children">
                                                     <span class="button_children"
@@ -502,7 +504,7 @@
                                                 </span>
                                             </span>
                                     </button>
-                                    <button class="guide_wrap_button" th:if="${#strings.equals(session.member.memberType, 'GENERAL_GUIDE')}">
+                                    <button class="guide_wrap_button" th:if="${session.member != null and #strings.equals(session.member.memberType, 'GENERAL_GUIDE')}">
                                             <span class="camping_div_second_span">
                                                 <span class="button_children">
                                                     <span class="button_leader"

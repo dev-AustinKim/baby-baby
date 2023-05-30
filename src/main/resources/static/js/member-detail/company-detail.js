@@ -223,7 +223,7 @@ function loadEvents(memberId) {
                                                 <div class="project_card">
                                                     <a class="project_card_a" href="/event/detail/${e.id}">
                                                         <div class="real_cafe"
-                                                        data-event=""
+                                                        style = "background-image: url('/eventFiles/display?fileName=Event/${e.files[0].filePath}/${e.files[0].fileUUID}_${e.files[0].fileOriginalName}')"
                                                         ></div>
                                                     </a>
                                                     <div class="project_card_div">
@@ -361,7 +361,7 @@ function seeMoreEventHandler() {
                                                 <div class="project_card">
                                                     <a class="project_card_a" href="/event/detail/${e.id}">
                                                         <div class="real_cafe"
-                                                        data-event=""
+                                                        style = "background-image: url('/eventFiles/display?fileName=Event/${e.files[0].filePath}/${e.files[0].fileUUID}_${e.files[0].fileOriginalName}')"
                                                         ></div>
                                                     </a>
                                                     <div class="project_card_div">

@@ -218,9 +218,15 @@ public class PurchaseServiceImpl implements PurchaseService {
             if (newGuide == null) {
                 Guide guide1 = new Guide(event, company);
                 Guide savedGuide = guidRepository.save(guide1);
-                log.info("save가 되는중?");
                 kids.forEach(kid -> {
                     Crew crew = new Crew(kid, savedGuide);
+                    crew.setEventRegisterDate(LocalDate.now());
+                    crewRepository.save(crew);
+                });
+            } else{
+                final Guide finalGuide = guide;
+                kids.forEach(kid -> {
+                    Crew crew = new Crew(kid, finalGuide);
                     crew.setEventRegisterDate(LocalDate.now());
                     crewRepository.save(crew);
                 });

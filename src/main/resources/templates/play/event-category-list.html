@@ -127,7 +127,7 @@
                                             </div>
                                         </a>
                                     </div> -->
-                                    <div class="static-banner">
+                                    <div class="static-banner" th:if="${session.member != null and #strings.equals(session.member.memberType, 'COMPANY')}">
                                         <div class="static-banner-context">
                                             <div class="static-banner-date">
                                                 부모님에겐 휴식을, 아이들에겐 추억을!
@@ -138,7 +138,7 @@
                                                 체험학습을 제공해보세요.
                                             </div>
                                         </div>
-                                        <a href="/event/goWrite" class="apply-form">
+                                        <a href="/event/writeFirst" class="apply-form">
                                             <svg width="22" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 9.41545L0.5 6.10352e-05H22.5L11.5 9.41545ZM0.5 1.60012V16.0001H22.5V1.60012L11.5 11.0155L0.5 1.60012Z" fill="white"></path>
                                             </svg>
@@ -147,493 +147,52 @@
                                             </div>
                                         </a>
                                     </div>
+
+                                    <div class="static-banner" th:if="${session.member != null and !#strings.equals(session.member.memberType, 'COMPANY')}">
+                                        <div class="static-banner-context">
+                                            <div class="static-banner-date">
+                                                부모님에겐 휴식을, 아이들에겐 추억을!
+                                            </div>
+                                            <div class="satic-banner-title">
+                                                체험학습은 어떠셨나요?
+                                                <br>
+                                                체험학습을 공유해보세요
+                                            </div>
+                                        </div>
+                                        <a href="/parentsYard/list" class="apply-form">
+                                            <svg width="22" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 9.41545L0.5 6.10352e-05H22.5L11.5 9.41545ZM0.5 1.60012V16.0001H22.5V1.60012L11.5 11.0155L0.5 1.60012Z" fill="white"></path>
+                                            </svg>
+                                            <div class="a-context">
+                                                부모님 마당 바로가기
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="static-banner" th:if="${session.member == null}">
+                                        <div class="static-banner-context">
+                                            <div class="static-banner-date">
+                                                부모님에겐 휴식을, 아이들에겐 추억을!
+                                            </div>
+                                            <div class="satic-banner-title">
+                                                체험학습을 경헙하고싶으신가요?
+                                                <br>
+                                                지금 바로 가입하세요!
+                                            </div>
+                                        </div>
+                                        <a href="/member/login" class="apply-form">
+                                            <svg width="22" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.5 9.41545L0.5 6.10352e-05H22.5L11.5 9.41545ZM0.5 1.60012V16.0001H22.5V1.60012L11.5 11.0155L0.5 1.60012Z" fill="white"></path>
+                                            </svg>
+                                            <div class="a-context">
+                                                아기자기 가입하러가기
+                                            </div>
+                                        </a>
+                                    </div>
+
+
+
                                 </section>
-                                <!-- 게시글 1개 시작 -->
-<!--                                   <div role="presentation" class="instance">-->
-<!--                                        <a class="item" href="">-->
-<!--                                            <div class="thumbnail-container">-->
-<!--                                                <div class="thumbnail-list">-->
-<!--                                                    <div class="photo-thumbnail" style="background-image:url('/images/main/images/event-001.jpg')"></div>-->
-<!--    &lt;!&ndash;                                                사진 div&ndash;&gt;-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="list-content">-->
-<!--                                                <div class="list-title" >-->
-<!--                                                    장항준 감독 영화 리바운드 재밌다던데 같이 보러 가실-->
-<!--                                                    분-->
-<!--                                                </div>-->
-<!--                                                <div class="for-price-full-contain">-->
-<!--                                                    <div class="for-price-wrap">-->
-<!--                                                        <div class="list-writer" >정세인</div>-->
-<!--                                                        <div class="list-date-container">-->
-<!--                                                            <span class="print-data"-->
-<!--                                                                >역삼역 4번 출구</span-->
-<!--                                                            >-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                    <span class="event-price-wrap">-->
-<!--                                                        <span class="event-price" >45000</span-->
-<!--                                                        ><span>원</span>-->
-<!--                                                    </span>-->
-<!--                                                </div>-->
-<!--                                                <div clsas="list-footer">-->
-<!--                                                    <div class="list-footer-container">-->
-<!--                                                        <div class="loca-status-container">-->
-<!--                                                            <div class="status-community">-->
-<!--                                                                <i class="second-confirm"></i>-->
-<!--                                                                <span class="ing">-->
-<!--                                                                    <span class="event-start-day"-->
-<!--                                                                          >2023-04-12</span-->
-<!--                                                                    >-->
-<!--                                                                    ~<span class="event-end-day"-->
-<!--                                                                        >2023-06-24</span-->
-<!--                                                                    >-->
-<!--                                                                    <div class="like-count-container">-->
-<!--                                                                        <div class="people-icon"></div>-->
-<!--                                                                        <span class="like-count"-->
-<!--                                                                            >10</span-->
-<!--                                                                        >-->
-<!--                                                                        <span>명 모집</span>-->
-<!--                                                                    </div>-->
-<!--                                                                </span>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </a>-->
-<!--                                        <button type="button" class="wish-button" aria-pressed="false">-->
-<!--                                            <svg-->
-<!--                                                viewBox="0 0 32 32"-->
-<!--                                                focusable="false"-->
-<!--                                                role="presentation"-->
-<!--                                                class="wish-button-svg"-->
-<!--                                                aria-hidden="true"-->
-<!--                                            >-->
-<!--                                                <path-->
-<!--                                                    d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"-->
-<!--                                                ></path>-->
-<!--                                            </svg>-->
-<!--                                        </button>-->
-<!--                                    </div>-->
-                                <!-- 게시글 1개 끝 -->
-
-                                <!-- 게시글 1개 시작 -->
-
-                                <!--<div role="presentation" class="instance">
-                                    <a class="item" href="">
-                                        <div class="thumbnail-container">
-                                            <div class="thumbnail-list">
-                                                <div class="photo-thumbnail" style="background-image:url('/images/main/images/event-003.jpg')"></div>
-                                                &lt;!&ndash; 사진 div &ndash;&gt;
-                                            </div>
-                                        </div>
-                                        <div class="list-content">
-                                            <div class="list-title">
-                                                장항준 감독 영화 리바운드 재밌다던데 같이 보러 가실
-                                                분
-                                            </div>
-                                            <div class="for-price-full-contain">
-                                                <div class="for-price-wrap">
-                                                    <div class="list-writer">정세인</div>
-                                                    <div class="list-date-container">
-                                                        <span class="print-data"
-                                                            >역삼역 4번 출구</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                                <span class="event-price-wrap">
-                                                    <span class="event-price">45000</span
-                                                    ><span>원</span>
-                                                </span>
-                                            </div>
-                                            <div clsas="list-footer">
-                                                <div class="list-footer-container">
-                                                    <div class="loca-status-container">
-                                                        <div class="status-community">
-                                                            <i class="second-confirm"></i>
-                                                            <span class="ing">
-                                                                <span class="event-start-day"
-                                                                    >2023-04-12</span
-                                                                >
-                                                                ~<span class="event-end-day"
-                                                                    >2023-06-24</span
-                                                                >
-                                                                <div class="like-count-container">
-                                                                    <div class="people-icon"></div>
-                                                                    <span class="like-count"
-                                                                        >10</span
-                                                                    >
-                                                                    <span>명 모집</span>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <button type="button" class="wish-button" aria-pressed="false">
-                                        <svg
-                                            viewBox="0 0 32 32"
-                                            focusable="false"
-                                            role="presentation"
-                                            class="wish-button-svg"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                &lt;!&ndash; 게시글 1개 끝 &ndash;&gt;
-
-                                &lt;!&ndash; 게시글 1개 시작 &ndash;&gt;
-                                <div role="presentation" class="instance">
-                                    <a class="item" href="">
-                                        <div class="thumbnail-container">
-                                            <div class="thumbnail-list">
-                                                <div class="photo-thumbnail" style="background-image:url('/images/main/images/event-004.jpg')"></div>
-                                                &lt;!&ndash; 사진 div &ndash;&gt;
-                                            </div>
-                                        </div>
-                                        <div class="list-content">
-                                            <div class="list-title">
-                                                행복한 추억을 만들 수 있고 재밌는 어촌 체험학습 가실 분
-                                            </div>
-                                            <div class="for-price-full-contain">
-                                                <div class="for-price-wrap">
-                                                    <div class="list-writer">정세인</div>
-                                                    <div class="list-date-container">
-                                                        <span class="print-data"
-                                                            >강남역 4번 출구</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                                <span class="event-price-wrap">
-                                                    <span class="event-price">60000</span
-                                                    ><span>원</span>
-                                                </span>
-                                            </div>
-                                            <div clsas="list-footer">
-                                                <div class="list-footer-container">
-                                                    <div class="loca-status-container">
-                                                        <div class="status-community">
-                                                            <i class="second-confirm"></i>
-                                                            <span class="ing">
-                                                                <span class="event-start-day"
-                                                                    >2023-04-12</span
-                                                                >
-                                                                ~<span class="event-end-day"
-                                                                    >2023-04-24</span
-                                                                >
-                                                                <div class="like-count-container">
-                                                                    <div class="people-icon"></div>
-                                                                    <span class="like-count"
-                                                                        >5</span
-                                                                    >
-                                                                    <span>명 모집</span>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <button type="button" class="wish-button" aria-pressed="false">
-                                        <svg
-                                            viewBox="0 0 32 32"
-                                            focusable="false"
-                                            role="presentation"
-                                            class="wish-button-svg"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                &lt;!&ndash; 게시글 1개 끝 &ndash;&gt;
-
-                                &lt;!&ndash; 게시글 1개 시작 &ndash;&gt;
-                                <div role="presentation" class="instance">
-                                    <a class="item" href="">
-                                        <div class="thumbnail-container">
-                                            <div class="thumbnail-list">
-                                                <div class="photo-thumbnail" style="background-image:url('/images/main/images/event-001.jpg')"></div>
-                                                &lt;!&ndash; 사진 div &ndash;&gt;
-                                            </div>
-                                        </div>
-                                        <div class="list-content">
-                                            <div class="list-title">
-                                                행복한 추억을 만들 수 있고 재밌는 농촌 체험학습 가실 분
-                                            </div>
-                                            <div class="for-price-full-contain">
-                                                <div class="for-price-wrap">
-                                                    <div class="list-writer">정세인</div>
-                                                    <div class="list-date-container">
-                                                        <span class="print-data"
-                                                            >석계역 1번 출구</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                                <span class="event-price-wrap">
-                                                    <span class="event-price">70000</span
-                                                    ><span>원</span>
-                                                </span>
-                                            </div>
-                                            <div clsas="list-footer">
-                                                <div class="list-footer-container">
-                                                    <div class="loca-status-container">
-                                                        <div class="status-community">
-                                                            <i class="second-confirm"></i>
-                                                            <span class="ing">
-                                                                <span class="event-start-day"
-                                                                    >2023-07-12</span
-                                                                >
-                                                                ~<span class="event-end-day"
-                                                                    >2023-07-24</span
-                                                                >
-                                                                <div class="like-count-container">
-                                                                    <div class="people-icon"></div>
-                                                                    <span class="like-count"
-                                                                        >8</span
-                                                                    >
-                                                                    <span>명 모집</span>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <button type="button" class="wish-button" aria-pressed="false">
-                                        <svg
-                                            viewBox="0 0 32 32"
-                                            focusable="false"
-                                            role="presentation"
-                                            class="wish-button-svg"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                &lt;!&ndash; 게시글 1개 끝 &ndash;&gt;
-
-                                &lt;!&ndash; 게시글 1개 시작 &ndash;&gt;
-                                <div role="presentation" class="instance">
-                                    <a class="item" href="">
-                                        <div class="thumbnail-container">
-                                            <div class="thumbnail-list">
-                                                <div class="photo-thumbnail" style="background-image:url('/images/main/images/event-001.jpg')"></div>
-                                                &lt;!&ndash; 사진 div &ndash;&gt;
-                                            </div>
-                                        </div>
-                                        <div class="list-content">
-                                            <div class="list-title">
-                                                행복한 추억을 만들 수 있고 재밌는 서울 궁 투어 가실 분
-                                            </div>
-                                            <div class="for-price-full-contain">
-                                                <div class="for-price-wrap">
-                                                    <div class="list-writer">정세인</div>
-                                                    <div class="list-date-container">
-                                                        <span class="print-data"
-                                                            >분당역 7번 출구</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                                <span class="event-price-wrap">
-                                                    <span class="event-price">10000</span
-                                                    ><span>원</span>
-                                                </span>
-                                            </div>
-                                            <div clsas="list-footer">
-                                                <div class="list-footer-container">
-                                                    <div class="loca-status-container">
-                                                        <div class="status-community">
-                                                            <i class="second-confirm"></i>
-                                                            <span class="ing">
-                                                                <span class="event-start-day"
-                                                                    >2023-08-12</span
-                                                                >
-                                                                ~<span class="event-end-day"
-                                                                    >2023-08-24</span
-                                                                >
-                                                                <div class="like-count-container">
-                                                                    <div class="people-icon"></div>
-                                                                    <span class="like-count"
-                                                                        >20</span
-                                                                    >
-                                                                    <span>명 모집</span>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <button type="button" class="wish-button" aria-pressed="false">
-                                        <svg
-                                            viewBox="0 0 32 32"
-                                            focusable="false"
-                                            role="presentation"
-                                            class="wish-button-svg"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                &lt;!&ndash; 게시글 1개 끝 &ndash;&gt;
-
-                                &lt;!&ndash; 게시글 1개 시작 &ndash;&gt;
-                                <div role="presentation" class="instance">
-                                    <a class="item" href="">
-                                        <div class="thumbnail-container">
-                                            <div class="thumbnail-list">
-                                                <div class="photo-thumbnail" style="background-image:url('/images/main/images/event-003.jpg')"></div>
-                                                &lt;!&ndash; 사진 div &ndash;&gt;
-                                            </div>
-                                        </div>
-                                        <div class="list-content">
-                                            <div class="list-title">
-                                                행복한 추억을 만들 수 있고 재밌는 박물관 체험학습 가실 분
-                                            </div>
-                                            <div class="for-price-full-contain">
-                                                <div class="for-price-wrap">
-                                                    <div class="list-writer">정세인</div>
-                                                    <div class="list-date-container">
-                                                        <span class="print-data"
-                                                            >광화문역 11번 출구</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                                <span class="event-price-wrap">
-                                                    <span class="event-price">100000</span
-                                                    ><span>원</span>
-                                                </span>
-                                            </div>
-                                            <div clsas="list-footer">
-                                                <div class="list-footer-container">
-                                                    <div class="loca-status-container">
-                                                        <div class="status-community">
-                                                            <i class="second-confirm"></i>
-                                                            <span class="ing">
-                                                                <span class="event-start-day"
-                                                                    >2023-06-12</span
-                                                                >
-                                                                ~<span class="event-end-day"
-                                                                    >2023-06-30</span
-                                                                >
-                                                                <div class="like-count-container">
-                                                                    <div class="people-icon"></div>
-                                                                    <span class="like-count"
-                                                                        >30</span
-                                                                    >
-                                                                    <span>명 모집</span>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <button type="button" class="wish-button" aria-pressed="false">
-                                        <svg
-                                            viewBox="0 0 32 32"
-                                            focusable="false"
-                                            role="presentation"
-                                            class="wish-button-svg"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                &lt;!&ndash; 게시글 1개 끝 &ndash;&gt;
-
-                                &lt;!&ndash; 게시글 1개 시작 &ndash;&gt;
-                                <div role="presentation" class="instance">
-                                    <a class="item" href="">
-                                        <div class="thumbnail-container">
-                                            <div class="thumbnail-list">
-                                                <div class="photo-thumbnail" style="background-image:url('/images/main/images/event-004.jpg')"></div>
-                                                &lt;!&ndash; 사진 div &ndash;&gt;
-                                            </div>
-                                        </div>
-                                        <div class="list-content">
-                                            <div class="list-title">
-                                                행복한 추억을 만들 수 있고 재밌는 전시회 같이 가실 분
-                                            </div>
-                                            <div class="for-price-full-contain">
-                                                <div class="for-price-wrap">
-                                                    <div class="list-writer">정세인</div>
-                                                    <div class="list-date-container">
-                                                        <span class="print-data"
-                                                            >사당역 8번 출구</span
-                                                        >
-                                                    </div>
-                                                </div>
-                                                <span class="event-price-wrap">
-                                                    <span class="event-price">30000</span
-                                                    ><span>원</span>
-                                                </span>
-                                            </div>
-                                            <div clsas="list-footer">
-                                                <div class="list-footer-container">
-                                                    <div class="loca-status-container">
-                                                        <div class="status-community">
-                                                            <i class="second-confirm"></i>
-                                                            <span class="ing">
-                                                                <span class="event-start-day"
-                                                                    >2023-04-12</span
-                                                                >
-                                                                ~<span class="event-end-day"
-                                                                    >2023-06-24</span
-                                                                >
-                                                                <div class="like-count-container">
-                                                                    <div class="people-icon"></div>
-                                                                    <span class="like-count"
-                                                                        >12</span
-                                                                    >
-                                                                    <span>명 모집</span>
-                                                                </div>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <button type="button" class="wish-button" aria-pressed="false">
-                                        <svg
-                                            viewBox="0 0 32 32"
-                                            focusable="false"
-                                            role="presentation"
-                                            class="wish-button-svg"
-                                            aria-hidden="true"
-                                        >
-                                            <path
-                                                d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                </div>-->
-                                <!-- 게시글 1개 끝 -->
-
                                 <!-- top 버튼 -->
 <!--                                <div class="top-btn-container">-->
 <!--                                    <button type="button" class="top-btn">-->
@@ -651,7 +210,7 @@
 <!--                                    </button>-->
 <!--                                </div>-->
                                 <!-- write 버튼 -->
-                                <div class="write-btn-container" th:if="${session.member != null}" th:value="${session.member.memberType}" onclick="location.href='/event/goWrite'">
+                                <div class="write-btn-container" th:if="${session.member != null}" onclick="location.href='/event/goWrite'">
                                     <button type="button" class="write-btn">
                                         <div class="bottom-write"> 글쓰기
                                             <path fill="none" d="M0 0h24v24H0z"></path>

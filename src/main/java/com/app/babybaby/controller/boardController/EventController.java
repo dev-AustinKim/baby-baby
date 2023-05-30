@@ -171,19 +171,19 @@ public class EventController {
 
 
 
-    @GetMapping("goWrite")
-    public RedirectView test(HttpSession session){
-        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-        Long sessionId = null;
-        String url = null;
-
-        if(memberDTO == null){
-            return  new RedirectView("/member/login");
-        }
-
-        log.info(memberDTO.toString());
-        return memberDTO.getMemberType() == MemberType.COMPANY ? new RedirectView("/event/writeFirst") : new RedirectView("/event/list");
-    }
+//    @GetMapping("goWrite")
+//    public RedirectView test(HttpSession session){
+//        MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//        Long sessionId = null;
+//        String url = null;
+//
+//        if(memberDTO == null){
+//            return  new RedirectView("/member/login");
+//        }
+//
+//        log.info(memberDTO.toString());
+//        return memberDTO.getMemberType() == MemberType.COMPANY ? new RedirectView("/event/writeFirst") : new RedirectView("/event/list");
+//    }
 
 
 //
