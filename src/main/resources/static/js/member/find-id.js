@@ -34,7 +34,7 @@ $confirmBtn.on("click", function() {
 				text = `
 				<div class="email-wrap">
                         <p class="headline">${$emailInputvalue.val()}</p>
-                        <p >는 와디즈에 등록되어 있지 않은 계정입니다.</p>
+                        <p >는 아기자기에 등록되어 있지 않은 계정입니다.</p>
                         <div class="inner-container">
                             <button type="button" class="primary block button" onclick="location.href='/member/login'">회원가입하러 가기</button>
                             <button type="button" class="primary block button" onclick="location.href='/member/find-id'">이메일 다시 확인하기</button>
