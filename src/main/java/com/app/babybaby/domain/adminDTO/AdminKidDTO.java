@@ -4,6 +4,7 @@ import com.app.babybaby.type.GenderType;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -17,5 +18,6 @@ public class AdminKidDTO {
     private LocalDateTime eventEndDate;
     private String parentNickName;
     private GenderType kidGender;
+    private LocalDate participateDate;
 
 }

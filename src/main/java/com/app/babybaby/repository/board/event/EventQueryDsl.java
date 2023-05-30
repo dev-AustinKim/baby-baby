@@ -70,6 +70,6 @@ public interface EventQueryDsl {
     public void deleteEventByIds_queryDSL(Long eventId);
 
     //   [관리자] 기업상세 이벤트 페이징 목록
-    public Page<Event> findNowKidsEventsList_queryDSL(Pageable pageable, Long companyId);
+    public List<Event> findNowKidsEventsList_queryDSL(Long companyId);
 
 }

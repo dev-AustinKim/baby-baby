@@ -176,13 +176,11 @@ function showList(companyDTOS) {
     companyDTOS.forEach(company => {
         content +=
             `
-<!--               <tr class="no-hover-row" onclick="openModal(${company.id}, event)">-->
+               <tr class="row" onclick="openModal(${company.id}, event)">
                     <td class="no-modal">
                     <input type="checkbox" name="check">
                     </td>
                     <td class="company-id">${company.id}</td>
-                    <td>${company.memberName}</td>
-                    <td>${company.memberNickname}</td>
                     <td>${company.memberName}</td>
                     <td>${company.memberPhone}</td>
                     <td>${company.memberEmail}</td>
@@ -234,18 +232,21 @@ function showList(companyDTOS) {
 										<th>진행 여부</th>
 									</tr>
 								</thead>
+								
 								<tbody class="company-event-list">
-<!--									<tr>-->
-<!--										<td class="event-num">1</td>-->
-<!--										<td class="event-title">[아이와 함께하는] 진흙놀이</td>-->
-<!--										<td class="event-category">과학</td>-->
-<!--										<td class="event-location">여의도</td>-->
-<!--										<td class="event-period"><span class="start-date">2023.10.22</span><span> ~ </span><span class="send-date">2023.11.15</span></td>-->
-<!--										<td class="event-amount">1200<span>명</span></td>-->
-<!--										&lt;!&ndash; <td class="event-status hold">대기</td>-->
-<!--										<td class="event-status end">종료</td>&ndash;&gt;-->
-<!--										<td class="event-status process">진행중</td>-->
-<!--									</tr>-->
+								${company.companyEventList && company.companyEventList.length > 0
+                                ? company.companyEventList.map(event => `
+                                                    <tr>
+                                                        <td class="event-num">${event.id}</td>
+                                                        <td class="event-title">${event.boardTitle}</td>
+                                                        <td class="event-category">${event.category}</td>
+                                                        <td class="event-location">여의도</td>
+                                                        <td class="event-period"><span class="start-date">2023.10.22</span><span> ~ </span><span class="send-date">2023.11.15</span></td>
+                                                        <td class="event-amount">${event.eventRecruitCount}<span>명</span></td>
+                                                        <td class="event-status process">진행중</td>
+                                                    </tr>
+                                                    `).join('') : `<tr><td>제공한 행사가 없습니다.</td></tr>`
+                                }
 								</tbody>
 							</table>
 							<!-- 페이지 버튼 -->

@@ -80,12 +80,12 @@ public class AdminController {
     }
 
     //    기업 이벤트 목록
-    @GetMapping("company-event-List/{page}")
-    @ResponseBody
-    public Page<AdminEventDTO> getCompanyEvents(@PathVariable("page") int page, Long companyId){
-        Page<AdminEventDTO> adminCompanyEvents = adminEventService.getAdminCompanyEventListWithPaging(page -1, companyId);
-        return adminCompanyEvents;
-    }
+//    @GetMapping("company-event-List/{page}")
+//    @ResponseBody
+//    public Page<AdminEventDTO> getCompanyEvents(@PathVariable("page") int page, Long companyId){
+//        Page<AdminEventDTO> adminCompanyEvents = adminEventService.getAdminCompanyEventListWithPaging(page -1, companyId);
+//        return adminCompanyEvents;
+//    }
 
 
     //    관리자 기업 상세보기

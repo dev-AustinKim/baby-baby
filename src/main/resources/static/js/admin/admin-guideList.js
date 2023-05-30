@@ -357,10 +357,7 @@ function showList(guideDTOS) {
 							</li>
 							<li class="content-list">
 								<span>증명서류</span>
-								<div class="guide-file">${guide.memberFileOriginalName}</div>
-								<input class="filePath" style="visibility: hidden" value="${guide.memberFilePath}">
-								<input class="fileUUID" style="visibility: hidden" value="${guide.memberFileUUID}">
-								<input class="fileOriginalName" style="visibility: hidden" value="${guide.memberFileOriginalName}">
+								<a href="/files/download?fileName=Member/profile/${guide.memberFilePath}/${guide.memberFileUUID}_${guide.memberFileOriginalName}"><div class="guide-file">${guide.memberFileOriginalName}</div></a>
 							</li>
 						</ul>
 						<div class="update-box">
@@ -381,42 +378,6 @@ function showList(guideDTOS) {
 
 getAdminGuideList();
 
-// ------------------------------ 파일 ajax-------------------------------------
-
-const fileDownloadPath = {
-    filePath: null,
-    fileOriginalName : null,
-    fileUUID : null
-};
-
-
-function downloadCertification() {
-    $('.guide-file').on("click", function () {
-        console.log("클릭됨")
-        let downloadFilePath = null;
-        let downloadOriginalName = null;
-        let downloadUUID = null;
-        downloadFilePath = $(this).parents().find('.filePath').val();
-        downloadOriginalName = $(this).parents().find('.fileUUID').val();
-        downloadUUID = $(this).parents().find('.fileOriginalName').val();
-
-        console.log(downloadFilePath);
-        console.log(downloadOriginalName);
-        console.log(downloadUUID);
-
-        fileDownloadPath.filePath = downloadFilePath;
-        fileDownloadPath.fileOriginalName = downloadOriginalName;
-        fileDownloadPath.fileUUID = downloadUUID;
-
-        $.ajax({
-            url: `/pdf/file/download/${fileDownloadPath.filePath}?fileUUID=${fileDownloadPath.fileUUID}&fileOriginalName=${fileDownloadPath.fileOriginalName}`,
-            success: function () {
-                console.log("파일성공!")
-            }
-
-        })
-    });
-}
 //------------------------------- 승인하기 ajax---------------------------------------
 
 function updateStatus(){

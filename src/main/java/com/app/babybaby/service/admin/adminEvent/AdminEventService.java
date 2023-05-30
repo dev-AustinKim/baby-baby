@@ -21,7 +21,7 @@ public interface AdminEventService {
     public void deleteAdminEvent(List<String> eventIds);
 
     //    관리자 기업 이벤트 상세 보기
-    public Page<AdminEventDTO> getAdminCompanyEventListWithPaging(int page, Long companyId);
+//    public Page<AdminEventDTO> getAdminCompanyEventListWithPaging(int page, Long companyId);
 
     default AdminEventDTO toAdminEventDTO(Event event){
         return AdminEventDTO.builder()

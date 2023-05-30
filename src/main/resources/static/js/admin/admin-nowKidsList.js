@@ -385,6 +385,7 @@ function showList(nowKidsDTOS) {
     var content = "";
     var detailContent = "";
     nowKidsDTOS.forEach(nowKids => {
+        console.log(nowKids.adminKidDTOS)
         const formattedStartDate = formatDate(new Date(nowKids.startDate));
         const formattedEndDate = formatDate(new Date(nowKids.endDate));
         let changeCategoryName = null;
@@ -507,47 +508,51 @@ function showList(nowKidsDTOS) {
 									<!-- <td class="event-status hold">대기</td>
 									<td class="event-status end">종료</td>-->
 									<td class="event-status" style="color: ${eventStatusColor}">${changeEventStatus}</td> 
-<!--									<td class="event-guide maker_up_button">-->
-<!--										<svg-->
-<!--										viewbox="0 0 32 32"-->
-<!--										focusable="false"-->
-<!--										role="presentation"-->
-<!--										class="maker_svg"-->
-<!--										aria-hidden="true"-->
-<!--										style="width: 12px;"-->
-<!--										>-->
-<!--										<path-->
-<!--											d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"-->
-<!--										></path>-->
-<!--										</svg>-->
-<!--									</td>-->
+									<td class="event-guide maker_up_button">
+										<svg
+										viewbox="0 0 32 32"
+										focusable="false"
+										role="presentation"
+										class="maker_svg"
+										aria-hidden="true"
+										style="width: 12px;"
+										>
+										<path
+											d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"
+										></path>
+										</svg>
+									</td>
 								</tr>
-<!--								<tr class="crew-table" style="display: none;">-->
-<!--									<td colspan="7" style="padding: 15px;">-->
-<!--											<table class="rice-table">-->
-<!--												<thead class="rice-table-thead">-->
-<!--													<tr class="rice-table-tr">-->
-<!--														<th class="rice-table-th" style="width: 5%;">No</th>-->
-<!--														<th class="rice-table-th" style="width: 10%;">닉네임</th>-->
-<!--														<th class="rice-table-th" style="width: 10%;">이름</th>-->
-<!--														<th class="rice-table-th" style="width: 5%;">나이</th>-->
-<!--														<th class="rice-table-th" style="width: 45%;">참여행사</th>-->
-<!--														<th class="rice-table-th" style="width: 25%;">참여일자</th>-->
-<!--													</tr>-->
-<!--												</thead>-->
-<!--												<tbody class="kid-list">-->
-<!--&lt;!&ndash;													<tr class="rice-table-tr">&ndash;&gt;-->
-<!--&lt;!&ndash;														<td class="rice-table-td">1</td>&ndash;&gt;-->
-<!--&lt;!&ndash;														<td class="rice-table-td">lovelyU</td>&ndash;&gt;-->
-<!--&lt;!&ndash;														<td class="rice-table-td">한동석</td>&ndash;&gt;-->
-<!--&lt;!&ndash;														<td class="rice-table-td">5</td>&ndash;&gt;-->
-<!--&lt;!&ndash;														<td class="rice-table-td">[우리은행] 모두가 함께하는 촉감놀이, 서해, 진흙여행</td>&ndash;&gt;-->
-<!--&lt;!&ndash;														<td class="rice-table-td">2023-04-22 18:26:00</td>&ndash;&gt;-->
-<!--&lt;!&ndash;													</tr>&ndash;&gt;-->
-<!--												</tbody>-->
-<!--											</table>-->
-<!--									</td>-->
-<!--								</tr>-->
+								<tr class="crew-table" style="display: none;">
+									<td colspan="7" style="padding: 15px;">
+											<table class="rice-table">
+												<thead class="rice-table-thead">
+													<tr class="rice-table-tr">
+														<th class="rice-table-th" style="width: 5%;">No</th>
+														<th class="rice-table-th" style="width: 10%;">닉네임</th>
+														<th class="rice-table-th" style="width: 10%;">이름</th>
+														<th class="rice-table-th" style="width: 5%;">나이</th>
+														<th class="rice-table-th" style="width: 45%;">참여행사</th>
+														<th class="rice-table-th" style="width: 25%;">참여일자</th>
+													</tr>
+												</thead>
+												<tbody class="kid-list">
+												${nowKids.adminKidDTOS && nowKids.adminKidDTOS.length > 0
+                                                    ? nowKids.adminKidDTOS.map(kidDTO => `
+                                                    <tr class="rice-table-tr">
+														<td class="rice-table-td">${kidDTO.id}</td>
+														<td class="rice-table-td">${kidDTO.parentNickName}</td>
+														<td class="rice-table-td">${kidDTO.kidName}</td>
+														<td class="rice-table-td">${kidDTO.kidAge}</td>
+														<td class="rice-table-td">${nowKids.boardTitle}</td>
+														<td class="rice-table-td"></td>
+													</tr>
+                                                    `).join('') : `<tr><td>참가한 아이가 없습니다.</td></tr>`
+                                                }
+												</tbody>
+											</table>
+									</td>
+								</tr>
 								<!-- //row 1개 -->
 							</table>
 						</div>

@@ -50,12 +50,12 @@ public class AdminEventServiceImpl implements AdminEventService {
     }
 
     //    관리자 기업 이벤트 상세 보기
-    @Override
-    public Page<AdminEventDTO> getAdminCompanyEventListWithPaging(int page, Long companyId) {
-        Page<Event> nowKidsEvents = eventRepository.findNowKidsEventsList_queryDSL(PageRequest.of(page, 5), companyId);
-        List<AdminEventDTO> adminNowKidsEventDTOS = nowKidsEvents.getContent().stream()
-                .map(this::toAdminEventDTO)
-                .collect(Collectors.toList());
-        return new PageImpl<>(adminNowKidsEventDTOS, nowKidsEvents.getPageable(), nowKidsEvents.getTotalElements());
-    }
+//    @Override
+//    public Page<AdminEventDTO> getAdminCompanyEventListWithPaging(int page, Long companyId) {
+//        Page<Event> nowKidsEvents = eventRepository.findNowKidsEventsList_queryDSL(PageRequest.of(page, 5), companyId);
+//        List<AdminEventDTO> adminNowKidsEventDTOS = nowKidsEvents.getContent().stream()
+//                .map(this::toAdminEventDTO)
+//                .collect(Collectors.toList());
+//        return new PageImpl<>(adminNowKidsEventDTOS, nowKidsEvents.getPageable(), nowKidsEvents.getTotalElements());
+//    }
 }

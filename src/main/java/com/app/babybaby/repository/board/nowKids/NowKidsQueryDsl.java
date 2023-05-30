@@ -11,7 +11,7 @@ import com.querydsl.core.Tuple;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,4 +63,7 @@ public interface NowKidsQueryDsl {
 
     //    [관리자페이지] 지금 우리아이들은 게시글 삭제
     public void deleteNowKidsByIds_queryDSL(Long nowKidsIds);
+
+    //    [관리자페이지] 지금 우리아이들은 이벤트 참여일자
+    public LocalDate findParticipateDate_queryDSL(Long kidId);
 }

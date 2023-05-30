@@ -1,6 +1,10 @@
 package com.app.babybaby.service.admin.adminMember;
 
+import com.app.babybaby.domain.adminDTO.AdminEventDTO;
+import com.app.babybaby.domain.adminDTO.AdminKidDTO;
 import com.app.babybaby.domain.adminDTO.AdminMemberDTO;
+import com.app.babybaby.entity.board.event.Event;
+import com.app.babybaby.entity.member.Kid;
 import com.app.babybaby.entity.member.Member;
 import com.app.babybaby.repository.board.event.EventRepository;
 import com.app.babybaby.repository.member.member.MemberRepository;
@@ -57,6 +61,13 @@ public class AdminMemberServiceImpl implements AdminMemberService {
             Optional<Long> eventCountOptional  = memberRepository.findCompanyOpenEventsCount_QueryDsl(memberId);
             Long eventCount = eventCountOptional.orElse(0L); // Optional이 null일 경우 기본값 0으로 설정
             eventCountList.add(eventCount);
+
+            List<Event>companyEventList = eventRepository.findNowKidsEventsList_queryDSL(memberId);
+
+            List<AdminEventDTO> events = companyEventList.stream()
+                    .map(this::toAdminEventDTO)
+                    .collect(Collectors.toList());
+            adminCompanyDTOS.stream().forEach(adminCompanyDTO -> adminCompanyDTO.setCompanyEventList(events));
         }
 
         adminCompanyDTOS.stream()

@@ -2,31 +2,34 @@ package com.app.babybaby.controller.fileDownloadController;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletResponse;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestController
-@RequestMapping("/pdf/*")
+@Controller
+@RequestMapping("/files/*")
+@RequiredArgsConstructor
+@Slf4j
 public class FileDownloadController {
-    @GetMapping("file/download/{filePath}/{fileUUID}/{fileOriginalName}")
 
-    @ResponseBody
-    public void download(@PathVariable String filePath, @PathVariable String fileUUID,  @PathVariable  String fileOriginalName, HttpServletResponse response) throws IOException {
-
-        String path = "C:/upload/Member/Profile/2023/05/26/b3b724f7-c739-4fe9-8289-91f146d151e8_입사지원서-임의택.pdf";
-        byte[] fileByte = FileUtils.readFileToByteArray(new File(path));
-
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment; fileName=\"" + URLEncoder.encode( "fileDownload.png", "UTF-8")+"\";");
-        response.setHeader("Content-Transfer-Encoding", "binary");
-
-        response.getOutputStream().write(fileByte);
-        response.getOutputStream().flush();
-        response.getOutputStream().close();
+    @GetMapping("download")
+    public ResponseEntity<Resource> download(String fileName) throws UnsupportedEncodingException {
+        Resource resource = new FileSystemResource("C:/upload/" + fileName);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "attachment;filename=" + new String(fileName.substring(fileName.indexOf("_") + 1).getBytes("UTF-8"), "ISO-8859-1"));
+        return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
 }

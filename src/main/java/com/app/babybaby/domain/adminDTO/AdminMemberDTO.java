@@ -40,10 +40,10 @@ public class AdminMemberDTO {
     private String memberFileUUID;
     private String memberFileOriginalName;
     private Long eventCount;
-    private List<Event> companyEventList;
+    private List<AdminEventDTO> companyEventList;
 
     @Builder
-    public AdminMemberDTO(Long id, String memberName, String memberNickname, String memberPhone, String memberEmail, LocalDateTime memberRegisterDate, String memberAddress, String memberAddressDetail, String memberAddressSubDetail, String memberProfileOriginalName, String memberProfileUUID, String memberProfilePath, MemberType memberType, Role memberRole, AcceptanceType memberGuideStatus, SleepType memberSleep, GuideType memberGuideType, CategoryType memberGuideInterest, String memberFilePath, String memberFileUUID, String memberFileOriginalName, Long eventCount, List<Event> companyEventList) {
+    public AdminMemberDTO(Long id, String memberName, String memberNickname, String memberPhone, String memberEmail, LocalDateTime memberRegisterDate, String memberAddress, String memberAddressDetail, String memberAddressSubDetail, String memberProfileOriginalName, String memberProfileUUID, String memberProfilePath, MemberType memberType, Role memberRole, AcceptanceType memberGuideStatus, SleepType memberSleep, GuideType memberGuideType, CategoryType memberGuideInterest, String memberFilePath, String memberFileUUID, String memberFileOriginalName, Long eventCount, List<AdminEventDTO> companyEventList) {
         this.id = id;
         this.memberName = memberName;
         this.memberNickname = memberNickname;
